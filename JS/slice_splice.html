@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //slice()-----------------------------------------------------------
+        //기존 배열은 그대로 , 새로운 배열로 복제됨
+        //( Start index for slicing , Endindex fo slicing(non-inclusive) )
+        // slice(startIndex , endIndex)
+
+        // nums = Array(20).fill().map(( _ , i )=> i) //배열 생성 코드
+
+        // nums = [ 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19 ]
+        // // num = nums.slice( 5, 10 ) //[5, 6, 7, 8, 9]
+        // num = nums.slice( 10 ) // [10,11,12,13,14,15,16,17,18,19]
+        // num = nums.slice() // 배열 전체 복사
+
+        // alert(num)
+
+        //splice()-----------------------------------------------------------
+        // 기존 배열 변경됨 , 새로운 배열 생성
+        // 항상 삭제된 값을 반환
+        // (시작인덱스, (시작 인덱스 포함) 제거 할 개수, 추가할 아이템)
+        // splice(index, noOfItems, '',''..)
+
+
+        // nums = [ 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19 ]
+
+        // num = nums.splice( 5, 3 ) // [5,6,7] 삭제된 값만 반환
+
+        //
+        // num = nums.splice( 5, 0, -5,-6,-7 ) // [] => 두번째 인자 '0' 삭제를 안시킴
+
+        // num = nums.splice( 10, 2, -10,-11 )  //[10, 11] 삭제된 값만 반환
+
+        // num = nums.splice( 15 )  //[15, 16, 17, 18, 19] 삭제된 값만 반환
+        // alert(num)
+
+
+        var li = ['a','b','c','d','e']
+        // array.splice(index, howmany, element1, ...., elementN);
+        // li.splice(1, 0,'x','y') // b 앞에 x,y 삽입
+        // li.splice(1, 1,'x','y') // b 를삭제 -> 그자리에 순서대로 삽입
+        // alert(li)
+
+        // var numbers = [1,2,3,4,5,6,7,8,9,10];
+        // //  3 부터 (인덱스 2) 시작
+        // alert(numbers.splice(2)); // array, [3,4,5,6,7,8,9,10]
+        // alert(numbers); // 남은 요소를 알림창에 표시, [1, 2]
+        
+        // var numbers = [1,2,3,4,5,6,7,8,9,10];
+        // alert(numbers.splice(2, 4)); // array, [3,4,5,6]
+        // alert(numbers) // 남은요소 표시
+        
+        // var numbers = [1,2,3,4,5,6,7,8,9,10];
+        // alert(numbers.splice(2, 4, 'three', 'four', 'five', 'six')); // array, [3,4,5,6]
+        // alert(numbers); // array, [1,2,three,four,five,six,7,8,9,10]
+        
+    </script>
+
+</body>
+</html>

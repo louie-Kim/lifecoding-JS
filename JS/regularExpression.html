@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정규표현식</title>
+</head>
+<body>
+    <script>
+
+        // a 라는 문자열을 찾고자 한다
+        // var pattern = /a/;
+
+        // var pattern = /a./; //a 다음의 문자 찾기
+        // var pattern = new RegExp('a');
+
+        //'abcde' 안에서 pattern이들고 있는 문자 찾기
+        //exec(): 문자 '추출',  배열로 리턴
+        var pattern = /a/;
+        pattern.exec('abcde'); //[a]
+        pattern.exec('bcdef'); //null
+
+
+        // var pattern = /a/;
+        // //boolean 리턴
+        // pattern.test('abcde') //true
+        // pattern.test('bcdef') //false
+
+        var pattern = /a/;
+        var str = 'abcdef'
+        var str = 'bcdef'
+        //match(): 배열로 리턴
+        str.match(pattern) // [a]
+        str.match(pattern) // null
+        
+        // var pattern = /a/;
+        // var str = 'abcdef'
+        // str.replace(pattern, 'A') //'Abcdef'
+
+        //옵션
+        // i : 대소문자 안가림
+        var xi = /a/;
+        console.log("Abcde".match(xi));
+
+        var oi = /a/i;
+        console.log("Abcde".match(oi));
+
+        //g : 검색된 모든 결과를 리턴
+        var xg = /a/;
+        console.log("abcdea".match(xg));
+
+        var og = /a/g;
+        console.log("abcdea".match(og));
+
+        var ig = /a/ig  //대소문자 구분 X, 모든 문자 찾기
+
+        //캡쳐
+        var pattern= /(\w+)\s(\w+)/;
+        var str = "very good"
+        var result = str.replace(pattern, "$2, $1")
+        console.log(result); //good, very
+
+        //치환
+        //https://opentutorial/course/1
+        var urlPattern = /^https:\/\/opentutorial\/course\/\d+$/;
+        var content = ''
+        
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- <ul>
+        <script>
+            var grade =  {kim:10, k30409:6, lee:20 }
+            for (var key in grade) {
+            // grade[key] = value
+            document.write("<li> key: " + key + " value: " + grade[key] + "</li>");
+            }
+        </script>
+    </ul> -->
+
+    <script>
+    //     var grade =  {kim:10, k30409:6, lee:20 }
+    //     for (var key in grade) {
+    //    // grade[key] = value
+    //    document.write("key: " + key + " value: " + grade[key] + "<br/>");
+    //    }
+
+    // //객체
+    //  var grade =  {kim:10, k30409:6, lee:20 }
+
+    //  var grade = new Object(); // or var grades = {}
+    //  grades['kim'] = 10;
+    //  grades['k30409'] = 6;
+    //  grades['lee'] = 20;
+
+    //  //객체 접근
+    //  grade['k30409']  ,grade['kim']
+    //  grade.k30409  ,grade.kim
+
+     // 반복문 + 객체
+    //  var arr = ["a","b","c"]
+     
+    //  for(i=0; i < arr.length; i++){
+    //     // console.log(arr[i]);
+    //     alert(arr[i]);
+    //  }
+    
+    //for in문
+    // var grade =  {kim:10, k30409:6, lee:20 }
+    // // var arr = ["a","b","c"]
+    // for(key in grade){
+    //     console.log(key);   //key
+    //     console.log(grade[key]); // value
+    // }
+    
+    //객체안의 객체, 객체안의 함수
+    //this => grades
+    var grades = {
+        'list' : {kim:10, k30409:6, lee:20 },
+        'show' : function(){
+
+            //this : 함수가 소속된 객체 grades
+           for(key in this.list){
+            console.log(key, this.list[key]);
+           }
+           
+        }
+    }
+    // alert(grades['list']['kim'])
+    // alert(grades.show())
+    grades.show()
+
+
+    </script>
+    
+</body>
+</html>

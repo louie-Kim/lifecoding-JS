@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        //외부 함수
+        // function outter(){
+
+        //     //내부함수
+        //     // var inner = function(){....}
+        //     function inner(){
+        //         var title = 'good day'
+        //         alert(title)
+        //     }
+
+        //     inner();
+
+        // }
+
+        // outter();
+
+
+
+        //클로저
+        //외부 함수
+        // function outter(){
+
+        //     //외부 지역변수
+        //     var title = 'good day'
+        
+        //     function inner(){
+        //         //내부 함수에서 외부함수의 지역변수에 접근 가능
+        //         alert(title) // 
+        //     }
+
+        //     inner();
+
+        // }
+
+        // outter();
+
+
+        //클로저
+        //함수가 자신이 생성된 범위 외부에서도 해당 함수의 변수에 접근
+        // function outter(){
+
+        //     //외부 지역 변수
+        //     var title = 'good day'
+
+        //         //익명함수 반환
+        //         return function(){
+        //             alert(title); // 외부함수의 지역변수에 접근가능
+        //         }
+
+        //     }
+        
+        // //outter() -> 익명함수가 inner에 할당
+        // var inner = outter();
+        // //outter 함수의 지역 변수인 title에 접근하여 값을 가져옴
+        // inner();
+
+
+
+        
+
+        
+        //내부 함수가 외부 함수의 변수에 대한 참조를 유지
+        // function factory_movie(title){
+
+        //     //title은 factory_movie의 지역 변수 
+            
+        //     //클로저 생성
+        //     // get_title , set_title 을 통해 title 변수에 접근하고 수정가능
+        //     // 함수가 자신의 스코프 밖에서 선언된 변수에 접근할 수 있고, 
+        //     // 이러한 접근을 통해 변수를 수정할 수 있다는 것을 의미
+        //     return{
+        //             get_title : function(){
+        //                 return title;
+        //             },
+        //             set_title : function(_title){
+        //                 //엄격하게 변수 관리
+        //                 if( typeof _title === 'string' ){
+        //                     title =   _title
+        //                 }else{
+        //                     alert('제목은 문자열 이어야 함')
+        //                 }
+        //             }
+        //           }
+
+        // }
+        // // debugger
+        // //'ghost in the shell'는 factory_movie 의 지역변수로 됨.
+        // ghost = factory_movie('ghost in the shell');
+        // //get_title() : return title => title은 factory_movie의 지역변수
+        // alert(ghost.get_title())
+
+        // // matrix = factory_movie('matrix')
+
+        // // alert(ghost.get_title())
+        // // alert(matrix.get_title())
+
+        // //'공각 기동대'는 factory_movie 의 지역변수로 됨.
+        // ghost.set_title('공각 기동대')
+
+        // alert(ghost.get_title())
+        // // alert(matrix.get_title())
+
+
+
+
+
+
+
+        //클로저 응용
+        var arr1 = []
+        
+        // arr =[5,5,5,5,5]
+        // debugger
+        //i++을 사용하고 있기 때문에, 각 익명 함수는 현재 반복에서의 i 값을 기억X
+        for (var i = 0; i<5; i++){
+            arr[i] = function(){
+                return i //5만 기억..
+            }
+        }
+
+        for(var index in  arr1){
+            console.log(arr[index]());
+        }
+
+        
+
+        var arr2 = []
+        //arr =[0,1,2,3,4]
+        for (var i = 0; i<5; i++){
+
+            arr[i] = 
+                function(id){  
+
+                // 클로저: 함수가 자신의 스코프 밖에서 선언된 변수(id)에 접근
+                return function(){ return id } 
+
+                
+            }(i);
+            //(i) => (id)
+           
+        }
+
+        for(var index in  arr2){
+            console.log(arr[index]());
+        }
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+</html>

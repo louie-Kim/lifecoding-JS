@@ -8,44 +8,173 @@
 <body>
     <script>
         //window : 최상위 객체이며, 브라우저 창(윈도우)을 나타냅니다
-        // //모든 전역 변수와 함수는 실제로 window 객체의 속성이 됩니다.
-        // //this?? : JS의 함수 안에서 사용하는 키워드
+        // JavaScript 코드를 실행할 때, 코드는 기본적으로 window 객체 내에서 실행됩니다.
+        //모든 전역 변수와 함수는 실제로 window 객체의 속성이 됩니다.
+
         // function func(){
         //     if( window === this ){
-        //         // console.log("window === this");
-        //         console.log(this);
+        //         console.log("window === this");
+        //         // console.log(this);
         //     }
         // }
 
         // func(); // 전역 범위에서 호출 : 전역객체 window.의 메소드로 호출
 
 
-        // // 전역 변수 x를 선언하고 값 할당
-        // var x = 10;
-
-        // // window 객체에 x 변수를 추가
-        // window.x = x;
-
-        // // window 객체의 x 변수에 접근하여 출력
-        // console.log(window.x); // 출력 결과: 10
+        
 
 
 
-        function greet() {
-        alert("Hello, my name is " + this.name);
+        // function greet() {
+        // alert("Hello, my name is " + this.name);
+        // }
+
+        // const person = {
+        // name: "John",
+        // sayHello: greet
+        // };
+
+        // // 전역 범위에서 함수 호출
+        // //this.name : 전역객체의 name을 참조 -> name 속성은 정의 X
+        // greet(); 
+
+        // // 출력: "Hello, my name is undefined" (브라우저에서는 "Hello, my name is [object Window]")
+
+        // person.sayHello(); //객체내 메소드 호출
+        
+
+        // 생성자 함수
+        // function Person(name, age) {
+            //this = john
+        //     this.name = name;
+        //     this.age = age;
+        //     }
+
+        // const john = new Person("John", 30);
+
+        // console.log(john.name); // 출력: "John"
+        // console.log(john.age); // 출력: 30
+
+        
+
+
+
+        // function func(){
+        //     if( window === this ){
+        //         console.log("window === this");
+        //         // console.log(this);
+        //     }
+        // }
+
+        // func(); // 이 함수는 소속이없음 -> this : window
+
+
+
+        // var o = {
+
+        //     func : function(){
+        //         if(o === this){ // this -> o 객체
+        //             document.write('o === this')
+        //         }
+        //     }
+        // }
+
+        // o.func() // 이 메서드는 O에 소속 -> this : o
+
+        
+
+
+
+        // function Person(name, age) {
+        //     this.name = name;
+        //     this.age = age;
+        //     }
+
+
+
+
+
+
+        // var funcThis = null;
+
+        // //생성자 함수
+        // function Func(){
+        //     funcThis = this; //
+
+        // }
+
+        
+        //  // 전역범위 호출
+        // var o1 = Func(); // this -> window
+        
+
+        // if(funcThis === window){
+        //     document.write('window <br/>')
+        // }
+
+        // //생성자 함수 호출    this -> o2
+        // var o2 = new Func();
+        // if(funcThis === o2){
+        //     document.write('o2 <br/>')
+        // }
+       
+
+
+
+
+        // //
+        // var sum = new Function( 'x', 'y', 'return x+y' );
+
+        // function sum(x,y){
+
+        //     return x+y
+        // }
+
+
+        //apply , this
+        var o = { name: 'john', age:'32'};
+        var p = { name:'sonny', age:'33'};
+
+        function func() {
+            switch (this) {
+                case o:
+                alert(this.name + ',' + this.age);
+                    break;
+                case p:
+                alert(this.name + ',' + this.age);
+                    break;
+                case window:
+                    document.write('window <br/>');
+                    break;
+            }
         }
+        //apply(  )
+        func(); // 전역 호출 : this -> window
 
-        const person = {
-        name: "John",
-        sayHello: greet
+        //함수 호출 방식에 따라 함수의 소속이 달라짐
+        func.apply(o); // func() -> o={}에 종속
+        func.apply(p); // func() -> p={}에 종속
+
+
+        var x = {
+            value: 10,
+            displayValue: function() {
+                console.log(this.value);
+            }
         };
 
-        // 전역 범위에서 함수 호출
-        greet(); 
-        // 출력: "Hello, my name is undefined" (브라우저에서는 "Hello, my name is [object Window]")
+        function func() {
+            console.log(this.value); //this -> x
+        }
 
-        person.sayHello();
-        
+        //func()를 x객체에 종속시킴
+
+        func.apply(x); // 출력: 10
+        x.displayValue(); // 출력: 10
+
+
+
+
     </script>
 </body>
 </html>

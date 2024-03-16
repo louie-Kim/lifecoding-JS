@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //window : 최상위 객체이며, 브라우저 창(윈도우)을 나타냅니다
+        // //모든 전역 변수와 함수는 실제로 window 객체의 속성이 됩니다.
+        // //this?? : JS의 함수 안에서 사용하는 키워드
+        // function func(){
+        //     if( window === this ){
+        //         // console.log("window === this");
+        //         console.log(this);
+        //     }
+        // }
+
+        // func(); // 전역 범위에서 호출 : 전역객체 window.의 메소드로 호출
+
+
+        // // 전역 변수 x를 선언하고 값 할당
+        // var x = 10;
+
+        // // window 객체에 x 변수를 추가
+        // window.x = x;
+
+        // // window 객체의 x 변수에 접근하여 출력
+        // console.log(window.x); // 출력 결과: 10
+
+
+
+        function greet() {
+        alert("Hello, my name is " + this.name);
+        }
+
+        const person = {
+        name: "John",
+        sayHello: greet
+        };
+
+        // 전역 범위에서 함수 호출
+        greet(); 
+        // 출력: "Hello, my name is undefined" (브라우저에서는 "Hello, my name is [object Window]")
+
+        person.sayHello();
+        
+    </script>
+</body>
+</html>

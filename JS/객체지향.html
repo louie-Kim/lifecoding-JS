@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //JS에서는 생성자의 소속은 없다, 그냥 함수 이다.
+        // new + 함수() : 객체 , JS에서는 클래스가 없다.
+        function Person(){}
+
+        var p = new Person(); // new + Person() : 객체 생성
+
+        //객체에 속성 추가
+        p.name = 'kim'
+        p.introduce = function(){
+            return 'I\'m'+ ' ' + this.name
+        }
+        document.write(p.introduce())
+
+
+
+
+        // //객체의 재사용
+        function Person(name){
+            //초기화
+            this.name = name;
+            this.introduce = function(){
+                return 'My name is' + this.name
+            }
+        }
+
+        var p1 = new Person('kim')
+        document.write(p1.introduce() + '<br/>')
+        
+        // var p2 = new Person('sonny')
+        // document.write(p2.introduce() + '<br/>')
+
+
+        // //전역객체
+        // function func (){
+        //     alert('??????')
+        // }
+        // //window. 생략가능
+        // func();
+        
+        // //window : 전역 객체
+        // //window 객체의 속성의 함수
+        // //모든 전역변수, 함수들은 window객의 속성이다
+        // window.func();
+
+
+
+
+       
+        
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

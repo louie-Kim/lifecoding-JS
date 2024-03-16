@@ -26,7 +26,7 @@
 
 
 
-        //클로저
+        //클로저 : 내부함수가 생성될 당시의 외부변수를 기억
         //외부 함수
         // function outter(){
 
@@ -116,43 +116,95 @@
 
 
 
-        //클로저 응용
-        var arr1 = []
+        // 클로저 응용
+        // var arr1 = []
         
-        // arr =[5,5,5,5,5]
-        // debugger
-        //i++을 사용하고 있기 때문에, 각 익명 함수는 현재 반복에서의 i 값을 기억X
-        for (var i = 0; i<5; i++){
-            arr[i] = function(){
-                return i //5만 기억..
+        // // debugger
+        // /*
+        //   i=5 일때 for문 종료 -> 익명함수의 i는 현재값 5를 기억
+        //   -> 모든 익명함수가 5를 참조
+        // */
+        // for (var i = 0; i<5; i++){
+
+        //     //arr1 =[ƒ, ƒ, ƒ, ƒ, ƒ] : 모든 함수는 5를 참조
+        //     arr1[i] = function(){
+        //                     return i //5만 기억..
+        //                         }
+        // }
+
+        // console.log(arr1);
+
+        // for(var index in  arr1){
+        //     console.log(arr1[index]());
+        // }
+
+        // var arr2 = []
+        // //arr =[0,1,2,3,4]
+        // for (var i = 0; i<5; i++){
+
+        //     arr2[i] = 
+        //         function(id){  
+                
+        //         // id 값 유지
+        //         // 클로저: 함수가 자신의 스코프 밖에서 선언된 변수(id)에 접근
+        //         return function(){ return id } 
+                
+        //     }(i);
+        //     //(i) => (id)
+           
+        // }
+        // console.log(arr2);
+
+        // for(var index in  arr2){
+        //     console.log(arr2[index]());
+        // }
+
+
+        
+        // //makeAdder가 호출 될때 마다 익명함수를 생성 -> x값기억
+        // //
+        // function makeAdder(x){
+
+        //     // x : 유지...
+
+        //     return function(y){
+        //         return x + y;
+        //     }
+
+        // }
+        // //add3 <= return function(y){return x + y;}
+        // const add3 = makeAdder(3); // x = 3기억
+        // console.log(add3(2)); //5
+
+        // const add10 = makeAdder(10); //x = 10기억
+        // console.log(add10(5)); //10 + 5 = 15
+        // console.log(add3(1)); //3 + 1 = 4
+        // // add3, add10은 서로 다른 환경을 가짐 : 서로다른 X값을 유지
+
+        
+
+
+        function makeCounter(){
+            
+            //외부 변수를 기억
+            let num = 0; // 
+            
+            return function(){
+                //내부 함수가 생성될때
+               return num++  // 
             }
         }
 
-        for(var index in  arr1){
-            console.log(arr[index]());
-        }
-
+        //  counter = function(){num++}
+        debugger
+        let counter = makeCounter()
         
+        console.log(counter());//0
+        console.log(counter());//1
+        console.log(counter());//2
 
-        var arr2 = []
-        //arr =[0,1,2,3,4]
-        for (var i = 0; i<5; i++){
 
-            arr[i] = 
-                function(id){  
 
-                // 클로저: 함수가 자신의 스코프 밖에서 선언된 변수(id)에 접근
-                return function(){ return id } 
-
-                
-            }(i);
-            //(i) => (id)
-           
-        }
-
-        for(var index in  arr2){
-            console.log(arr[index]());
-        }
 
 
 

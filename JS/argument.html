@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        //JS- 함수의 매개변수를 정의 하지 않아도됨 
+        //    인자의 수를 마음대로 지정해도 됨
+        // arguments.length : sum()에 전달된 아규먼트의 수를 알수 있음
+        function sum(){
+
+            // arguments : 예약어, argument 값들을 담을 수 있음.
+            //arguments  : 1,2,3,4
+            var i, _sum = 0;
+            for(i=0; i<arguments.length; i++){
+                document.write(i + ':' + arguments[i]+'<br/>')
+                // a += 1 : a = a + 1
+                _sum += arguments[i];
+            }
+            return _sum
+        }
+        
+        document.write('result: ' + sum(1,2,3,4))
+
+        
+        function one(arg1){
+
+            console.log(
+                'one length' , one.length, //1 : one()의 파라미터수
+                'arguments'  , arguments.length //2 :전달하는 아규먼트의수
+                );
+
+        }
+        one('val1','val2')
+
+        
+        // apply : 함수 호출
+        // function sum(arg1, arg2){
+        //     return arg1+arg2
+        // }   
+        // alert(sum.apply(null, [1,2])) 
+
+
+        // apply : 함수 호출
+        o1 = {val1:1 , val2:2, val3:3}
+        o2 = {v1:10 , v2:50, v3:100, v4:25}
+
+        function sum(){
+
+            var _sum = 0;
+            for(name in this){ // this <= o1, o2
+                _sum += this[name] // value값
+                // _sum += name // key 값
+            }
+            return _sum
+        }
+
+        alert(sum.apply(o1))
+        alert(sum.apply(o2))
+
+
+        //객체 안에 함수 포함.
+        o1 = {val1:1 , val2:2, val3:3, sum:sum}
+        o2 = {v1:10 , v2:50, v3:100, v4:25, sum:sum}
+
+        function sum(){
+
+            var _sum = 0;
+            for(key in this){  //this <= o1, o2 
+                if( typeof this[key] !== 'function' )
+                _sum += this[key] // value값
+                // _sum += key // key 값
+            }
+            return _sum
+        }
+
+        alert(o1.sum()) // 객체안의 함수 호출
+        alert(o2.sum())
+
+    </script>
+    
+</body>
+</html>

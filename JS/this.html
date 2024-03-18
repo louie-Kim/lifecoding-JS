@@ -95,28 +95,25 @@
 
 
 
-        // var funcThis = null;
+        var funcThis = null;
 
-        // //생성자 함수
-        // function Func(){
-        //     funcThis = this; //
-
-        // }
-
+        //생성자 함수
+        function Func(){
+            funcThis = this; //
+        }
         
-        //  // 전역범위 호출
-        // var o1 = Func(); // this -> window
-        
-
+        //전역범위 호출
+        // Func(); // this -> window
         // if(funcThis === window){
-        //     document.write('window <br/>')
-        // }
-
-        // //생성자 함수 호출    this -> o2
-        // var o2 = new Func();
-        // if(funcThis === o2){
-        //     document.write('o2 <br/>')
-        // }
+            //     document.write('window <br/>')
+            // }
+        
+        //생성자 함수 호출   this -> o2
+        var o2 = new Func();
+       
+        if(funcThis === o2){
+            document.write('o2 <br/>')
+        }
        
 
 
@@ -131,46 +128,47 @@
         // }
 
 
-        //apply , this
-        var o = { name: 'john', age:'32'};
-        var p = { name:'sonny', age:'33'};
+        // //apply , this
+        // var o = { name: 'john', age:'32'};
+        // var p = { name:'sonny', age:'33'};
 
-        function func() {
-            switch (this) {
-                case o:
-                alert(this.name + ',' + this.age);
-                    break;
-                case p:
-                alert(this.name + ',' + this.age);
-                    break;
-                case window:
-                    document.write('window <br/>');
-                    break;
-            }
-        }
-        //apply(  )
-        func(); // 전역 호출 : this -> window
+        // function func() {
+        //     switch (this) {
+        //         case o:
+        //         alert(this.name + ',' + this.age);
+        //             break;
+        //         case p:
+        //         alert(this.name + ',' + this.age);
+        //             break;
+        //         case window:
+        //             document.write('window <br/>');
+        //             break;
+        //     }
+        // }
+        // //apply(  )
+        // func(); // 전역 호출 : this -> window 소속
 
-        //함수 호출 방식에 따라 함수의 소속이 달라짐
-        func.apply(o); // func() -> o={}에 종속
-        func.apply(p); // func() -> p={}에 종속
+        // //함수 호출 방식에 따라 함수의 소속이 달라짐
+        // func.apply(o); // func() -> o={}에 종속
+        // func.apply(p); // func() -> p={}에 종속
 
 
-        var x = {
-            value: 10,
-            displayValue: function() {
-                console.log(this.value);
-            }
-        };
+        // var x = {
+        //     value: 10,
+        //     displayValue: function() {
+        //         console.log(this.value); //this -> x
+        //     }
+        // };
 
-        function func() {
-            console.log(this.value); //this -> x
-        }
+        // function func() {
+        //     console.log(this.value); //this -> x
+        // }
+        // //전역호출
+        // window.func();   // undefined
 
-        //func()를 x객체에 종속시킴
-
-        func.apply(x); // 출력: 10
-        x.displayValue(); // 출력: 10
+        // //func()를 x객체에 종속시킴
+        // func.apply(x); // 출력: 10
+        // x.displayValue(); // 출력: 10
 
 
 

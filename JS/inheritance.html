@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inheritance</title>
+</head>
+<body>
+    
+    <script>
+
+        //생성자 함수
+        function Person(name){
+            this.name = name    
+            this.introduce = function(){
+                return 'My name is ' + ' '+this.name
+            }
+        }
+        
+        // var p1 = new Person('Alex') //생성자 함수의 this -> p1
+        // document.write(p1.introduce() + '<br/>')
+
+
+
+        //JS에서는 모든 객체가 prototype 속성을 가지고 있음.
+        //상속
+        // function Person(name){
+        //     this.name = name    
+        // }
+
+        // //Person()에 속성과, 메서드를 추가 : .prototype
+        // //Person 객체가 name 속성을 가지고 있지만, 초기값은 null로 설정
+        
+        // Person.prototype.name = null; //초기화
+        // //메서드 추가
+        // Person.prototype.introduce = function(){
+        //     //this.name : Programmer 객체의 name 속성을 참조
+        //     return 'My name is ' + ' '+this.name //alex
+        // }
+
+        // function Programmer(name){
+        //     this.name = name    
+        // }
+
+        // Programmer.prototype = new Person(); //상속
+
+        // var p1 = new Programmer('alex')
+        // document.write(p1.introduce() + '<br/>')
+
+
+
+        function Person(name){
+            this.name = name    
+        }
+        
+        Person.prototype.name = null; //초기화
+        //메서드 추가
+        Person.prototype.introduce = function(){
+            //this.name : Programmer 객체의 name 속성을 참조
+            return 'My real name is ' + ' '+this.name //alex
+        }
+
+        function Programmer(name){
+            this.name = name    
+        }
+
+        Programmer.prototype = new Person();
+        //메서드 확장
+        Programmer.prototype.coding = function(){
+            return 'Hi!!'
+        }
+
+        function Designer(name){
+            this.name = name    
+        }
+
+        Designer.prototype = new Person();
+        //메서드 확장
+        Designer.prototype.design = function(){
+            return 'beautiful~!!'
+        }
+
+        var p1 = new Programmer('alex')
+        document.write(p1.introduce() + '<br/>')
+        document.write(p1.coding() + '<br/>')
+
+        var p2 = new Designer('kim')
+        document.write(p2.introduce() + '<br/>')
+        document.write(p2.design() + '<br/>')
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+</html>

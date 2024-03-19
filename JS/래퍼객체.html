@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>래퍼객체</title>
+</head>
+<body>
+
+    <script>
+
+        //원시데이터 타입 : 숫자, 문자열, boolean, null, undefined
+        
+        //객체 데이터 타입
+
+        //래퍼 객체
+        // 숫자->Number, 문자열->String, boolean->Boolean, null, undefined ->없음
+        var str = 'coding'
+
+        //내부동작 : str = new String('coding') , str이 객체로 동작하게 만들어줌 
+        console.log(str.length);   //str가 객체 -> .length : 속성이있음
+        console.log(str.charAt(0)) //str가 객체 -> 메소드 있음.
+
+
+        /*
+        원시데이터타입 -> 원시데이터를 가지고 어떤 작업할때()
+        -> JS가 원시데이터타입 '객체'를 만들고 사용이 끝나면 제거
+        */
+
+      // 자동으로 생성된 래퍼 객체는 해당 값이 사용된 후, 래퍼 객체가 더 이상 필요하지 않을 때 해제
+        var str = 'coding' 
+       // 내부동작 : str = new String('coding')
+        str.prop = 'every body' //str래퍼객체 생성 -> 다음라인에서  래핑해제
+        console.log(str.prop); //
+
+        var str = 'abcde'; 
+        str.len = 5;        // 래퍼객체 임시 생성 : new String(str).len = 5
+        console.log(str.len); // undefined
+
+
+        var num = 123;
+        typeof num; // "number"
+        //내부 동작 : num = new Number(123)
+        num.toExponential() // 래퍼객체 임시 생성 -> 해제
+        num.prop = 1;       // 래퍼객체 임시 생성 -> 해제
+        console.log(num.prop); // 'undefined'
+
+        var boo = true;
+        typeof boo; // "boolean"
+        boo.toString()      // 래퍼객체 임시 생성
+        boo.name = 'abc';   // 래퍼객체 임시 생성
+        console.log(boo.name); // 'undefined'
+
+
+
+        var n  = 1;
+        var N = new Number(n);
+        console.log(n == N); // true
+        console.log(n === N); // false
+
+
+    </script>
+    
+</body>
+</html>

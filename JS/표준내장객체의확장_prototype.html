@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>표준내장객체의확장</title>
+</head>
+<body>
+    <script>
+
+        // var arr = new Array('seoul','busan', 'ulsan','US','japan')
+
+        // function getCity(arr){
+            
+        //     var index = Math.floor(arr.length*Math.random())
+        //     return arr[index]
+        // }
+
+        // console.log(getCity(arr));
+
+
+        
+        
+        // Array 표준내장 객체를 prototype을 사용해서 확장(+random)
+        // Array.prototype.random = function(){
+        //     //this = arr
+        //     var index = Math.floor(this.length*Math.random())
+        //     return this[index];
+
+        // }
+        // var arr = new Array('seoul','busan', 'ulsan','US','japan')
+        // console.log(arr.random());
+
+        // Object : 모든 객체의 '부모'
+
+        // Object.keys() : 객체의 키 값들을 리턴
+        // var arr = ["A","B","C"]
+        // console.log('Object.keys(arr):' , Object.keys(arr));
+        
+        
+
+        // Object.prototype.toString()
+        // var o = new Object()
+        // console.log('o.toString()' , o.toString);
+
+        // var a  = new Array(1,2,3)
+        // console.log('a.toString()' , a.toString());
+
+
+
+
+
+        
+        //
+        // function 기계(){
+        //     this.q ='strike'
+        //     this.w ='snowball'
+        // }
+
+        // 기계.prototype.name = 'kim' 
+        
+        // var nunu =  new 기계()
+        
+
+        // // var 어레이 = [4,2,1]
+        
+        // var 어레이 = new Array(4,2,1)
+        
+        // //Array 내장객체의 유전자에 함수 추가
+        // Array.prototype.험수 = function(){}
+        // //어레이.험수 사용가능
+
+
+
+
+
+        //모든 객체에 contain() 기능을 구현
+
+        Object.prototype.contain = function(needle){
+            //this : o , a 객체
+            //name : key, this[name] : value 
+            for(var name in this){
+                if(this[name] === needle){
+                    return true;
+                }
+            }
+            return false;
+
+        }
+
+        var o = {'name:':'kim', 'city:':'busan'}
+        console.log(o.contain('pusan')); //contain이 소속된 객체는 o : this->o
+
+
+        var a = ['kim','lee','park']
+        console.log(a.contain('lee'));  //contain이 소속된 객체는 a : this->a
+
+
+        //최상위 Object 에 사용자가 정의한 contain을 넣으면 하위 모든 객체에 영향을 준다(단점)
+        for(var name in o){
+            //contain()  제외
+            //hasOwnProperty : 모든 객체에서 사용가능
+        //    if (a.hasOwnProperty(name)){
+        //        console.log(name);
+        //    }
+
+            console.log(name);
+        }
+
+
+    </script>
+</body>
+</html>

@@ -49,51 +49,109 @@
 
 
 
-        function Person(name){
-            this.name = name    
-        }
+        // function Person(name){
+        //     this.name = name    
+        // }
         
-        Person.prototype.name = null; //초기화
-        //메서드 추가
-        Person.prototype.introduce = function(){
-            //this.name : Programmer 객체의 name 속성을 참조
-            return 'My real name is ' + ' '+this.name //alex
-        }
+        // Person.prototype.name = null; //초기화
+        // //메서드 추가
+        // Person.prototype.introduce = function(){
+        //     //this.name : Programmer, Designer 객체의 name 속성을 참조
+        //     return 'My real name is ' + ' '+this.name //alex, kim
+        // }
 
-        function Programmer(name){
-            this.name = name    
-        }
+        // function Programmer(name){
+        //     this.name = name 
+        //   //p1.name = alex  
+        // }
 
+        //상속
         Programmer.prototype = new Person();
         //메서드 확장
         Programmer.prototype.coding = function(){
             return 'Hi!!'
         }
 
-        function Designer(name){
-            this.name = name    
-        }
+        // var p1 = new Programmer('alex')
+        // document.write(p1.introduce() + '<br/>')
+        // document.write(p1.coding() + '<br/>')
 
-        Designer.prototype = new Person();
-        //메서드 확장
-        Designer.prototype.design = function(){
-            return 'beautiful~!!'
-        }
+        // function Designer(name){
+        //     this.name = name   
+        //   // p2.name = kim 
+        // }
 
-        var p1 = new Programmer('alex')
-        document.write(p1.introduce() + '<br/>')
-        document.write(p1.coding() + '<br/>')
-
-        var p2 = new Designer('kim')
-        document.write(p2.introduce() + '<br/>')
-        document.write(p2.design() + '<br/>')
+        // //상속
+        // Designer.prototype = new Person();
+        // //메서드 확장
+        // Designer.prototype.design = function(){
+        //     return 'beautiful~!!'
+        // }
 
 
+        // var p2 = new Designer('kim')
+        // document.write(p2.introduce() + '<br/>')
+        // document.write(p2.design() + '<br/>')
+
+
+        //prototype chain
+
+        // function Ultra(){}  // 생성자함수
+        // Ultra.prototype.ultraProp = true ;  
+
+        // function Super(){}  // 생성자함수
+        // Super.prototype = new Ultra()
+
+        // function Sub(){}   // 생성자함수
+        // Sub.prototype = new Super()
+
+        // var o = new Sub() 
+        // console.log(o.ultraProp); //true
+
+       
+
+
+        // prototype 속성은 해당 함수로 생성된 객체들이 상속받을 속성과 메서드를 포함한 객체
+        // function func(){} //
+        // console.log(func.prototype); // {} 
+
+
+        // func.prototype.name = 'kim'
+         
+        // var o = new func() // 
+        // console.log(o.name);
 
 
 
 
 
+
+        //prototype chain
+        
+        function Ultra(){}  
+        Ultra.prototype.ultraProp = true ;  
+
+        function Super(){} 
+        
+        // var t = new Ultra()
+        // t.ultraProp = 4 
+        // Super.prototype = t
+        
+        Super.prototype = new Ultra()
+        Super.prototype.ultraProp = 100    
+
+        function Sub(){}  
+        var s = new Super(); 
+        Sub.prototype = s //간접상속
+        // s.ultraProp = 3 
+
+        var o = new Sub() 
+        
+        console.log(o.ultraProp);
+
+
+
+        
 
     </script>
 

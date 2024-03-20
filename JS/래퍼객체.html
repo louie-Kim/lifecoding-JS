@@ -31,10 +31,11 @@
         var str = 'coding' 
        // 내부동작 : str = new String('coding')
         str.prop = 'every body' //str래퍼객체 생성 -> 다음라인에서  래핑해제
-        console.log(str.prop); //
+        console.log(str.prop);  //undefined
 
         var str = 'abcde'; 
-        str.len = 5;        // 래퍼객체 임시 생성 : new String(str).len = 5
+        // 내부동작  :  str = new String(str)
+        str.len = 5;        
         console.log(str.len); // undefined
 
 

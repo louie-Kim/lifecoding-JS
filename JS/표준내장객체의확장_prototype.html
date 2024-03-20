@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>표준내장객체의확장</title>
+    <title>prototype</title>
 </head>
 <body>
     <script>
@@ -89,22 +89,28 @@
         }
 
         var o = {'name:':'kim', 'city:':'busan'}
-        console.log(o.contain('pusan')); //contain이 소속된 객체는 o : this->o
+        // console.log(o.contain('busan')); //contain이 소속된 객체는 o : this->o
 
 
         var a = ['kim','lee','park']
-        console.log(a.contain('lee'));  //contain이 소속된 객체는 a : this->a
+        // console.log(a.contain('lee'));  //contain이 소속된 객체는 a : this->a
 
 
         //최상위 Object 에 사용자가 정의한 contain을 넣으면 하위 모든 객체에 영향을 준다(단점)
-        for(var name in o){
-            //contain()  제외
-            //hasOwnProperty : 모든 객체에서 사용가능
-        //    if (a.hasOwnProperty(name)){
-        //        console.log(name);
-        //    }
+        for(var key in a){
 
-            console.log(name);
+            
+            //hasOwnProperty: o객체에 key값이 o 객체에 직접들어가 있나??
+            //o에 직접적으로 속한 속성들만을 처리, 상속된것 제외.
+            // o.객체에 key라는 속성을 자기가 직접 가지고 있냐??
+           if (a.hasOwnProperty(key)){
+               console.log(key); // 상속된 contain() 제외
+           }
+
+
+            // 상속받은 contain() 포함
+            // console.log(o[key]);
+            // console.log(key);
         }
 
 

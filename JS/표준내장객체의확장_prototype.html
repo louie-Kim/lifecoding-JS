@@ -51,24 +51,24 @@
 
 
         
-        //
-        // function 기계(){
-        //     this.q ='strike'
-        //     this.w ='snowball'
-        // }
+        
+        function 기계(){
+            this.q ='strike'
+            this.w ='snowball'
+        }
 
-        // 기계.prototype.name = 'kim' 
+        기계.prototype.name = 'kim' 
         
-        // var nunu =  new 기계()
+        var nunu =  new 기계()
         
 
-        // // var 어레이 = [4,2,1]
+        // var 어레이 = [4,2,1]
         
-        // var 어레이 = new Array(4,2,1)
+        var 어레이 = new Array(4,2,1)
         
-        // //Array 내장객체의 유전자에 함수 추가
-        // Array.prototype.험수 = function(){}
-        // //어레이.험수 사용가능
+        //Array 내장객체의 유전자에 함수 추가
+        Array.prototype.험수 = function(){}
+        //어레이.험수 사용가능
 
 
 
@@ -100,16 +100,15 @@
         for(var key in a){
 
             
-            //hasOwnProperty: o객체에 key값이 o 객체에 직접들어가 있나??
-            //o에 직접적으로 속한 속성들만을 처리, 상속된것 제외.
-            // o.객체에 key라는 속성을 자기가 직접 가지고 있냐??
+            // a.객체에 key라는 속성(index)을 자기가 직접 가지고 있냐??
+            // "상속된것 제외".
            if (a.hasOwnProperty(key)){
                console.log(key); // 상속된 contain() 제외
            }
 
 
             // 상속받은 contain() 포함
-            // console.log(o[key]);
+            // console.log(a[key]);
             // console.log(key);
         }
 
